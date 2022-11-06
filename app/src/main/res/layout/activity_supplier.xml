@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <!-- this is one of the dumbest ways to leave comments I've seen yet -->
+
+
+
+    <!--edit form for item's name-->
+    <EditText
+        android:id="@+id/idEdtName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="Enter item name" />
+
+    <!--edit form for item's price-->
+    <EditText
+        android:id="@+id/idEdtPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="Enter item price" />
+
+
+    <!--ze button for adding item and price to database-->
+    <Button
+        android:id="@+id/idBtnAddItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Add item"
+        android:textAllCaps="false" />
+
+    <!-- form to search inventory by item's name -->
+
+    <TextView
+        android:id="@+id/simpleTextView"
+        android:layout_width="398dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Update Inventory"
+        android:textSize="25sp" />
+
+    <EditText
+        android:id="@+id/idEdtFindName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="Enter item name you wish to edit" />
+
+    <!-- form for new price we'll be updating DB w/ -->
+    <EditText
+        android:id="@+id/idEdtChangePrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="Enter new item price" />
+
+    <!-- moar buttons to send form info to update DB -->
+    <Button
+        android:id="@+id/idBtnEditItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Save edit"
+        android:textAllCaps="false" />
+    
+
+</LinearLayout>

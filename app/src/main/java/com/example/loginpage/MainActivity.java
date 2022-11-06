@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class  MainActivity extends AppCompatActivity {
 
     private EditText Username;
     private EditText Password;
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
     // For employee login
     private void validate(String userName, String userPassword){
-        if((userName == "Employee") && (userPassword == "1234")){
+        if((userName.equals ( "Employee") && (userPassword.equals( "1234")))){
             //Connecting the login page to the new app page which will be the employee main page
             Intent intent = new Intent(MainActivity.this,ThirdActivity.class);
             startActivity(intent);
