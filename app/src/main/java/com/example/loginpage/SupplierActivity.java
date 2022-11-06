@@ -13,7 +13,7 @@ public class SupplierActivity extends AppCompatActivity {
 
     // creating variables for our edittext, button and dbhandler
     private EditText nameEdt, priceEdt, findNameEdt, changePriceEdt;
-    private Button addItemBtn, editItemBtn, readInventoryBtn;
+    private Button addItemBtn, editItemBtn;
     private DBHandler dbHandler;
 
     @Override
@@ -46,15 +46,15 @@ public class SupplierActivity extends AppCompatActivity {
 
                 // validating if the text fields are empty or not.
                 if (itemName.isEmpty() && itemPrice.isEmpty()) {
-                    Toast.makeText(SupplierActivity.this, "Please enter all the data..", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SupplierActivity.this, "Please fill in the forms", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 // method to add item and price to DB
                 dbHandler.addItem(itemName, itemPrice);
 
-                // after adding the data we are displaying a toast message.
-                Toast.makeText(SupplierActivity.this, "Item has been added to inventory.", Toast.LENGTH_SHORT).show();
+                // lets user know item was added
+                Toast.makeText(SupplierActivity.this, "Item has been added to inventory", Toast.LENGTH_SHORT).show();
                 nameEdt.setText("");
                 priceEdt.setText("");
             }
@@ -64,14 +64,14 @@ public class SupplierActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                // below line is to get data from all edit text fields.
+                // gets data from activity_supplier.xml text fields.
                 String itemName =  findNameEdt.getText().toString();
                 String itemPrice = changePriceEdt.getText().toString();
 
 
-                // validating if the text fields are empty or not.
+                // checks if text fields are empty
                 if (itemName.isEmpty() && itemPrice.isEmpty()) {
-                    Toast.makeText(SupplierActivity.this, "cookies", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SupplierActivity.this, "Please fill in the forms", Toast.LENGTH_SHORT).show();
                     return;
                 }
 

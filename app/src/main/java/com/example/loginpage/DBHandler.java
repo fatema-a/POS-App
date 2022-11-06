@@ -7,8 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHandler extends SQLiteOpenHelper {
 
-    // creating a constant variables for our database.
-    // below variable is for our database name.
+    // creates a constant variables for our database
     private static final String DB_NAME = "inventoryDB";
 
     // database version number
@@ -17,56 +16,48 @@ public class DBHandler extends SQLiteOpenHelper {
     // variable for our table name.
     private static final String TABLE_NAME = "inventory";
 
-    // below variable is for our course name column
+    // Variable for our item name column
     private static final String NAME_COL = "name";
 
-    // below variable id for our course duration column.
+    // variable for our item price column.
     private static final String PRICE_COL = "price";
 
-    // creating a constructor for our database handler.
+    //constructor for our database handler.
     public DBHandler(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
 
-    // below method is for creating a database by running a sqlite query
+    // method for creating a database by running a sqlite query
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // on below line we are creating
-        // an sqlite query and we are
-        // setting our column names
-        // along with their data types.
+
+        // creates an sqlite query
         String query = "CREATE TABLE " + TABLE_NAME + " ("
                 + NAME_COL + " TEXT,"
                 + PRICE_COL + " TEXT)";
 
-        // at last we are calling a exec sql
-        // method to execute above sql query
+
+        // executes our sql query
         db.execSQL(query);
     }
 
     // method used to add a new item and price to the DB
     public void addItem(String itemName, String itemPrice) {
 
-        // on below line we are creating a variable for
-        // our sqlite database and calling writable method
-        // as we are writing data in our database.
+
         SQLiteDatabase db = this.getWritableDatabase();
 
-        // on below line we are creating a
-        // variable for content values.
+
+        // variable for content values
         ContentValues values = new ContentValues();
 
-        // on below line we are passing all values
-        // along with its key and value pair.
+        //puts item prices and item name into cv values
         values.put(NAME_COL, itemName);
         values.put(PRICE_COL, itemPrice);
 
-        // after adding all values we are passing
-        // content values to our table.
         db.insert(TABLE_NAME, null, values);
 
-        // at last we are closing our
-        // database after adding database.
+        //closes database after adding
         db.close();
     }
 
