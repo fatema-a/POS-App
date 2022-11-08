@@ -7,26 +7,32 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
-public class  MainActivity extends AppCompatActivity {
+public class LoginPageActivity extends AppCompatActivity {
 
     private EditText Username;
     private EditText Password;
     private TextView Info;
+    private ImageButton Back;
     private Button Login;
+
     private int counter = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login_page);
 
         Username = (EditText)findViewById(R.id.etUsername);
         Password = (EditText) findViewById(R.id.etPassword);
         Info = (TextView) findViewById(R.id.tvinfo);
         Login = (Button)findViewById(R.id.btnLogin);
+        Back = (ImageButton)findViewById(R.id.ImbtnBack);
+
         Info.setText("Number of attempts remaining: 3");
+
 
         //reads the data entered by the user
         Login.setOnClickListener(new View.OnClickListener() {
@@ -36,14 +42,14 @@ public class  MainActivity extends AppCompatActivity {
             }
         });
 
-
+        Back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openPrevious();
+            }
+        });
     }
 
-    //===============================
-    //Main page selection: First activity
-    //===============================
-
-    // to be implemented
 
     //===============================
     //Login sections: Second activity
@@ -51,12 +57,23 @@ public class  MainActivity extends AppCompatActivity {
 
     // For employee login
     private void validate(String userName, String userPassword){
-        if((userName.equals ( "Employee") && (userPassword.equals( "1234")))){
+        if((userName.equals("Employee") && (userPassword.equals( "1234")))){
             //Connecting the login page to the new app page which will be the employee main page
-            Intent intent = new Intent(MainActivity.this,ThirdActivity.class);
+            Intent intent = new Intent(LoginPageActivity.this, EmployeeMainPageActivity.class);
             startActivity(intent);
         }
-        //in case wrong password input
+        else if ((userName.equals("Manager") && (userPassword.equals( "5678")))){
+            //Connecting the login page to the new app page which will be the employee main page
+            Intent intent = new Intent(LoginPageActivity.this, ManagerMainActivity.class);
+            startActivity(intent);
+        }
+
+        else if ((userName.equals("Supplier") && (userPassword.equals( "9012")))){
+            //Connecting the login page to the new app page which will be the employee main page
+            Intent intent = new Intent(LoginPageActivity.this, SupplierMainPageActivity.class);
+            startActivity(intent);
+        }
+        //in case wrong input
         else{
             counter--;
             Info.setText("Number of attempts remaining: " + String.valueOf(counter));
@@ -68,5 +85,10 @@ public class  MainActivity extends AppCompatActivity {
 
         }
 
+    }
+
+    public void openPrevious(){
+        Intent intent = new Intent(LoginPageActivity.this, MainPageActivity.class);
+        startActivity(intent);
     }
 }
