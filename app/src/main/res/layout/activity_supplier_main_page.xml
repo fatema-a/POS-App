@@ -20,8 +20,8 @@
 
     <Button
         android:id="@+id/btnProductList"
-        android:layout_width="112dp"
-        android:layout_height="63dp"
+        android:layout_width="120dp"
+        android:layout_height="68dp"
         android:text="Product List"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,5 +29,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.41" />
+
+    <Button
+        android:id="@+id/btnApprovalHistory"
+        android:layout_width="129dp"
+        android:layout_height="65dp"
+        android:text="Approval History"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.582" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

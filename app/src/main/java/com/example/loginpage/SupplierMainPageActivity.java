@@ -11,14 +11,21 @@ public class SupplierMainPageActivity extends AppCompatActivity {
 
     private Button LogOut;
     private Button ProductList;
+    private Button ApprovalHistory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supplier_main_page);
 
-        //Product history button
-
+        //approved product history button
+        ApprovalHistory = (Button) findViewById(R.id.btnApprovalHistory);
+        ApprovalHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openApprovedPurchasesActivity();
+            }
+        });
 
 
         //product list button
@@ -43,6 +50,7 @@ public class SupplierMainPageActivity extends AppCompatActivity {
         });
     }
 
+    // method to go back to main page
     public void goBackMain(){
         Intent intent = new Intent(SupplierMainPageActivity.this, MainPageActivity.class);
         startActivity(intent);
@@ -52,4 +60,9 @@ public class SupplierMainPageActivity extends AppCompatActivity {
         Intent intent = new Intent(this, SupplierActivity.class);
         startActivity(intent);
     }
+    public void openApprovedPurchasesActivity() {
+        Intent intent = new Intent(this, ApprovedPurchasesActivity.class);
+        startActivity(intent);
+    }
+
 }
