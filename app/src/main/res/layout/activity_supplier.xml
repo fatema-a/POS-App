@@ -12,6 +12,15 @@
 
 
 
+    <TextView
+        android:id="@+id/simpleTextView"
+        android:layout_width="398dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textAlignment="center"
+        android:text="Add item and Price to Inventory"
+        android:textSize="25sp" />
+
     <!--edit form for item's name-->
     <EditText
         android:id="@+id/idEdtName"
@@ -41,10 +50,11 @@
     <!-- form to search inventory by item's name -->
 
     <TextView
-        android:id="@+id/simpleTextView"
+        android:id="@+id/simplerTextView"
         android:layout_width="398dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:textAlignment="center"
         android:text="Update Inventory"
         android:textSize="25sp" />
 
@@ -71,6 +81,32 @@
         android:layout_margin="10dp"
         android:text="Save edit"
         android:textAllCaps="false" />
-    
+
+    <TextView
+        android:id="@+id/simplestTextView"
+        android:layout_width="398dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textAlignment="center"
+        android:text="Delete from Inventory"
+        android:textSize="25sp" />
+
+    <!-- form for new price we'll be updating DB w/ -->
+    <EditText
+        android:id="@+id/idEdtDeleteItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="Enter item to remove from inventory" />
+
+    <!-- moar buttons to send form info to update DB -->
+    <Button
+        android:id="@+id/idBtnDeleteItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Delete from inventory"
+        android:textAllCaps="false" />
+
 
 </LinearLayout>

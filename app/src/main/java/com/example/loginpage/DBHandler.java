@@ -1,28 +1,35 @@
+//*************************************************************************//
+//adapted from: https://auth.geeksforgeeks.org/user/chaitanyamunje/articles//
+//*************************************************************************//
+
+
 package com.example.loginpage;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.Cursor;
+
 
 public class DBHandler extends SQLiteOpenHelper {
 
-    // creates a constant variables for our database
+    // creates a constant variable name for our database
     private static final String DB_NAME = "inventoryDB";
 
     // database version number
     private static final int DB_VERSION = 1;
 
-    // variable for our table name.
+    // table name variable
     private static final String TABLE_NAME = "inventory";
 
     // Variable for our item name column
     private static final String NAME_COL = "name";
 
-    // variable for our item price column.
+    // Variable for our item name column
     private static final String PRICE_COL = "price";
 
-    //constructor for our database handler.
+    // constructor for our database handler.
     public DBHandler(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
@@ -31,36 +38,32 @@ public class DBHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        // creates an sqlite query
         String query = "CREATE TABLE " + TABLE_NAME + " ("
                 + NAME_COL + " TEXT,"
                 + PRICE_COL + " TEXT)";
 
-
-        // executes our sql query
         db.execSQL(query);
     }
 
     // method used to add a new item and price to the DB
     public void addItem(String itemName, String itemPrice) {
 
-
+        // variable name for our database and calling the writable method onto it
         SQLiteDatabase db = this.getWritableDatabase();
 
+        // creating variable for content values.
+        ContentValues cv = new ContentValues();
 
-        // variable for content values
-        ContentValues values = new ContentValues();
+        //puts item prices and item name into cv values variables
+        cv.put(NAME_COL, itemName);
+        cv.put(PRICE_COL, itemPrice);
 
-        //puts item prices and item name into cv values
-        values.put(NAME_COL, itemName);
-        values.put(PRICE_COL, itemPrice);
+        //  passes cv value variable  to the table.
+        db.insert(TABLE_NAME, null, cv);
 
-        db.insert(TABLE_NAME, null, values);
-
-        //closes database after adding
+        // closes database after adding to database
         db.close();
     }
-
     public void editItem(String itemName, String itemPrice) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -69,7 +72,6 @@ public class DBHandler extends SQLiteOpenHelper {
         cv.put(PRICE_COL,itemPrice);
         cv.put(NAME_COL,itemName);
 
-
         //db.update(TABLE_NAME, cv ,NAME_COL + " = " + itemName, null );
 
         db.update(TABLE_NAME, cv, "name = ?", new String[]{itemName});
@@ -77,10 +79,41 @@ public class DBHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+    // checks to see if an item being added already exists
+    public boolean compareitem(String itemName){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.rawQuery("Select * FROM inventory",null, null);
+
+        while (cursor.moveToNext()){
+            if (cursor.getString(0).equals(itemName) ){
+
+                cursor.close();
+
+                return true;
+            }
+        }
+        cursor.close();
+
+
+        return false;
+    }
+
+    // deletes an item from the inventory
+    void deleteItem(String itemName){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.delete(TABLE_NAME, "name = ?", new String[]{itemName});
+
+        db.close();
+
+    }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // does the table exist already?
+
+        // checks to see if the table already exists
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
     }
