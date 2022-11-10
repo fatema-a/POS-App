@@ -12,7 +12,6 @@ import android.content.Intent;
 
 public class SupplierActivity extends AppCompatActivity {
 
-    public ImageButton Return;
 
     // creates variables for  editText button and dbhandler
     private EditText nameEdt, priceEdt, findNameEdt, changePriceEdt, deleteItemEdt;
@@ -24,14 +23,6 @@ public class SupplierActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supplier);
 
-        Return = (ImageButton)findViewById(R.id.IbtnReturn1);
-
-        Return.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openPrevious();
-            }
-        });
 
         // initializes editText and button for adding item and prices to inventory
         nameEdt = findViewById(R.id.idEdtName);
@@ -145,11 +136,5 @@ public class SupplierActivity extends AppCompatActivity {
         });
 
     }
-
-    public void openPrevious(){
-        Intent intent = new Intent(SupplierActivity.this, SupplierMainPageActivity.class);
-        startActivity(intent);
-    }
-
 
 }
