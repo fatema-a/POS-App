@@ -25,6 +25,8 @@ public class SupplierActivity extends AppCompatActivity {
 
         // title
         getSupportActionBar().setTitle("Item Inventory");
+        //back
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // initializes editText and button for adding item and prices to inventory
         nameEdt = findViewById(R.id.idEdtName);

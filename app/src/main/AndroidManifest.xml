@@ -63,7 +63,9 @@
         </activity>
         <activity
             android:name=".SupplierActivity"
-            android:exported="true">
+            android:exported="true"
+            android:parentActivityName=".SupplierMainPageActivity"
+            >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
