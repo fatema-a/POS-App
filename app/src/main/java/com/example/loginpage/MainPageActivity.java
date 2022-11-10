@@ -34,11 +34,7 @@ public class MainPageActivity extends AppCompatActivity {
 
         Manager.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainPageActivity.this, ManagerMainActivity.class);
-                startActivity(intent);
-
-            }
+            public void onClick(View view) { openMainActivity();}
         });
 
         Supplier.setOnClickListener(new View.OnClickListener() {

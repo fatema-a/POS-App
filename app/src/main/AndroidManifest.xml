@@ -13,6 +13,13 @@
         android:theme="@style/Theme.LoginPage"
         tools:targetApi="31">
         <activity
+            android:name=".ManagerMainActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ApprovedPurchasesActivity"
             android:exported="false"
             android:parentActivityName=".SupplierMainPageActivity">
@@ -22,13 +29,6 @@
         </activity>
         <activity
             android:name=".SupplierMainPageActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".ManagerMainActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -65,8 +65,7 @@
         <activity
             android:name=".SupplierActivity"
             android:exported="true"
-            android:parentActivityName=".SupplierMainPageActivity"
-            >
+            android:parentActivityName=".SupplierMainPageActivity">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
