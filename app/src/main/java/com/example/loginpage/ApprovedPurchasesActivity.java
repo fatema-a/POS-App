@@ -16,7 +16,10 @@ public class ApprovedPurchasesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_approved_purchases);
 
         // title
-        getSupportActionBar().setTitle("Purchase Orders");
+        getSupportActionBar().setTitle("Purchased Orders");
+        //back
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
 
 
