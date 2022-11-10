@@ -23,6 +23,8 @@ public class SupplierActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supplier);
 
+        // title
+        getSupportActionBar().setTitle("Item Inventory");
 
         // initializes editText and button for adding item and prices to inventory
         nameEdt = findViewById(R.id.idEdtName);

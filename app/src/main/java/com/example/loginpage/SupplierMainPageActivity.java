@@ -18,6 +18,9 @@ public class SupplierMainPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supplier_main_page);
 
+        // title
+        getSupportActionBar().setTitle("Supplier");
+
         //approved product history button
         ApprovalHistory = (Button) findViewById(R.id.btnApprovalHistory);
         ApprovalHistory.setOnClickListener(new View.OnClickListener() {

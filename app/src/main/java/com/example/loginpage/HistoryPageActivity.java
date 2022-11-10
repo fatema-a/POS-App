@@ -16,6 +16,9 @@ public class HistoryPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history_page);
 
+        // title
+        getSupportActionBar().setTitle("Purchase History");
+
         Return = (ImageButton)findViewById(R.id.IbtnReturn);
 
         Return.setOnClickListener(new View.OnClickListener() {

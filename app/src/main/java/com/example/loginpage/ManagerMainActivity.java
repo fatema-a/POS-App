@@ -14,6 +14,9 @@ public class ManagerMainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // title
+        getSupportActionBar().setTitle("Manager");
+
         LogOut = (Button)findViewById(R.id.btnLogOut4);
 
         LogOut.setOnClickListener(new View.OnClickListener() {

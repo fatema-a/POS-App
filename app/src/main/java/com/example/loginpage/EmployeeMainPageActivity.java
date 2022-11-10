@@ -18,6 +18,9 @@ public class EmployeeMainPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employee_main_page);
 
+        // title
+        getSupportActionBar().setTitle("Employee");
+
         History = (Button)findViewById(R.id.btnHistory);
         ItemList = (Button)findViewById(R.id.btnItemList);
         LogOut = (Button)findViewById(R.id.btnBack2);

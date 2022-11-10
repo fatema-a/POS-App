@@ -18,6 +18,9 @@ public class MainPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
 
+        // title
+        getSupportActionBar().setTitle("User Login");
+
         Employee = (Button)findViewById(R.id.btnEmployee);
         Manager = (Button) findViewById(R.id.btnManager);
         Supplier = (Button)findViewById(R.id.btnSupplier);

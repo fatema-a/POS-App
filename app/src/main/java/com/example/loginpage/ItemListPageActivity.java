@@ -19,6 +19,9 @@ public class ItemListPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_list_page);
 
+        // title
+        getSupportActionBar().setTitle("Item Purchase");
+
         ActivityItemList = (EditText)findViewById(R.id.etActivityItemList);
         Back = (ImageButton)findViewById(R.id.IbtnBack);
 
