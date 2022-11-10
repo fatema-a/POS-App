@@ -24,7 +24,7 @@
     <!--edit form for item's name-->
     <EditText
         android:id="@+id/idEdtName"
-        android:layout_width="match_parent"
+        android:layout_width="387dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:hint="Enter item name" />
