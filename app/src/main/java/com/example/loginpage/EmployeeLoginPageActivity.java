@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-public class LoginPageActivity extends AppCompatActivity {
+public class EmployeeLoginPageActivity extends AppCompatActivity {
 
     private EditText Username;
     private EditText Password;
@@ -23,7 +23,7 @@ public class LoginPageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_page);
+        setContentView(R.layout.activity_login_page_employee);
 
         Username = (EditText)findViewById(R.id.etUsername);
         Password = (EditText) findViewById(R.id.etPassword);
@@ -59,20 +59,10 @@ public class LoginPageActivity extends AppCompatActivity {
     private void validate(String userName, String userPassword){
         if((userName.equals("Employee") && (userPassword.equals( "1234")))){
             //Connecting the login page to the new app page which will be the employee main page
-            Intent intent = new Intent(LoginPageActivity.this, EmployeeMainPageActivity.class);
-            startActivity(intent);
-        }
-        else if ((userName.equals("Manager") && (userPassword.equals( "5678")))){
-            //Connecting the login page to the new app page which will be the employee main page
-            Intent intent = new Intent(LoginPageActivity.this, ManagerMainActivity.class);
+            Intent intent = new Intent(EmployeeLoginPageActivity.this, EmployeeMainPageActivity.class);
             startActivity(intent);
         }
 
-        else if ((userName.equals("Supplier") && (userPassword.equals( "9012")))){
-            //Connecting the login page to the new app page which will be the employee main page
-            Intent intent = new Intent(LoginPageActivity.this, SupplierMainPageActivity.class);
-            startActivity(intent);
-        }
         //in case wrong input
         else{
             counter--;
@@ -88,7 +78,7 @@ public class LoginPageActivity extends AppCompatActivity {
     }
 
     public void openPrevious(){
-        Intent intent = new Intent(LoginPageActivity.this, MainPageActivity.class);
+        Intent intent = new Intent(EmployeeLoginPageActivity.this, MainPageActivity.class);
         startActivity(intent);
     }
 }

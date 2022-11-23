@@ -28,25 +28,35 @@ public class MainPageActivity extends AppCompatActivity {
         Employee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openMainActivity();
+                openMainActivityEmployee();
             }
         });
 
         Manager.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) { openMainActivity();}
+            public void onClick(View view) { openMainActivityManager();}
         });
 
         Supplier.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openMainActivity();
+                openMainActivitySupplier();
             }
         });
     }
 
-    public void openMainActivity(){
-        Intent intent = new Intent(MainPageActivity.this, LoginPageActivity.class);
+    public void openMainActivityEmployee(){
+        Intent intent = new Intent(MainPageActivity.this, EmployeeLoginPageActivity.class);
+        startActivity(intent);
+    }
+
+    public void openMainActivityManager(){
+        Intent intent = new Intent(MainPageActivity.this, ManagerLoginPageActivity.class);
+        startActivity(intent);
+    }
+
+    public void openMainActivitySupplier(){
+        Intent intent = new Intent(MainPageActivity.this, SupplierLoginPageActivity.class);
         startActivity(intent);
     }
 }
