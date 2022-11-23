@@ -25,6 +25,9 @@ public class EmployeeLoginPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page_employee);
 
+        // title
+        getSupportActionBar().setTitle("Employee Login");
+
         Username = (EditText)findViewById(R.id.etUsername);
         Password = (EditText) findViewById(R.id.etPassword);
         Info = (TextView) findViewById(R.id.tvinfo);

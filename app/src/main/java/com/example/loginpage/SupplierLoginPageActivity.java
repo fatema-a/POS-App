@@ -25,6 +25,9 @@ public class SupplierLoginPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supplier_login_page);
 
+        // title
+        getSupportActionBar().setTitle("Supplier Login");
+
         Username = (EditText)findViewById(R.id.etUsername);
         Password = (EditText) findViewById(R.id.etPassword);
         Info = (TextView) findViewById(R.id.tvinfo);
