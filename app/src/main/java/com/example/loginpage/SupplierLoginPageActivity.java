@@ -15,7 +15,6 @@ public class SupplierLoginPageActivity extends AppCompatActivity {
     private EditText Username;
     private EditText Password;
     private TextView Info;
-    private ImageButton Back;
     private Button Login;
 
     private int counter = 3;
@@ -32,7 +31,6 @@ public class SupplierLoginPageActivity extends AppCompatActivity {
         Password = (EditText) findViewById(R.id.etPassword);
         Info = (TextView) findViewById(R.id.tvinfo);
         Login = (Button)findViewById(R.id.btnLogin);
-        Back = (ImageButton)findViewById(R.id.ImbtnBack);
 
         Info.setText("Number of attempts remaining: 3");
 
@@ -45,12 +43,7 @@ public class SupplierLoginPageActivity extends AppCompatActivity {
             }
         });
 
-        Back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openPrevious();
-            }
-        });
+
     }
 
 
