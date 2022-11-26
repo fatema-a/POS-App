@@ -21,7 +21,8 @@
         </activity>
         <activity
             android:name=".ManagerLoginPageActivity"
-            android:exported="false" >
+            android:exported="false"
+            android:parentActivityName=".MainPageActivity" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
