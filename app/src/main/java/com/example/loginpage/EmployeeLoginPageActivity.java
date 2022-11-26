@@ -15,7 +15,6 @@ public class EmployeeLoginPageActivity extends AppCompatActivity {
     private EditText Username;
     private EditText Password;
     private TextView Info;
-    private ImageButton Back;
     private Button Login;
 
     private int counter = 3;
@@ -28,11 +27,13 @@ public class EmployeeLoginPageActivity extends AppCompatActivity {
         // title
         getSupportActionBar().setTitle("Employee Login");
 
+        //back button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         Username = (EditText)findViewById(R.id.etUsername);
         Password = (EditText) findViewById(R.id.etPassword);
         Info = (TextView) findViewById(R.id.tvinfo);
         Login = (Button)findViewById(R.id.btnLogin);
-        Back = (ImageButton)findViewById(R.id.ImbtnBack);
 
         Info.setText("Number of attempts remaining: 3");
 
@@ -45,12 +46,6 @@ public class EmployeeLoginPageActivity extends AppCompatActivity {
             }
         });
 
-        Back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openPrevious();
-            }
-        });
     }
 
 

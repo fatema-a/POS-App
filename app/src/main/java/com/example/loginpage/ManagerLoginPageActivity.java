@@ -14,7 +14,6 @@ public class ManagerLoginPageActivity extends AppCompatActivity {
     private EditText Username;
     private EditText Password;
     private TextView Info;
-    private ImageButton Back;
     private Button Login;
 
     private int counter = 3;
