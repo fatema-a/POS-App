@@ -9,15 +9,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SupplierLoginPageActivity extends AppCompatActivity {
 
-    private EditText Username;
-    private EditText Password;
-    private TextView Info;
-    private Button Login;
-
-    private int counter = 3;
+    private EditText username;
+    private EditText password;
+    private EditText repassword;
+    private Button login;
+    private Button signup;
+    DBSupplierLogin DB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,52 +26,62 @@ public class SupplierLoginPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_supplier_login_page);
 
         // title
-        getSupportActionBar().setTitle("Supplier Login");
+        getSupportActionBar().setTitle("Supplier Registration");
 
-        Username = (EditText)findViewById(R.id.etUsername);
-        Password = (EditText) findViewById(R.id.etPassword);
-        Info = (TextView) findViewById(R.id.tvinfo);
-        Login = (Button)findViewById(R.id.btnLogin);
+        //back button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Info.setText("Number of attempts remaining: 3");
+        username = (EditText)findViewById(R.id.etUsername);
+        password = (EditText) findViewById(R.id.etPassword);
+        repassword = (EditText) findViewById(R.id.repassword);
+        signup = (Button) findViewById(R.id.btnsignup);
+        login = (Button)findViewById(R.id.btnLogin);
+        DB = new DBSupplierLogin(this);
 
 
-        //reads the data entered by the user
-        Login.setOnClickListener(new View.OnClickListener() {
+        signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                validate(Username.getText().toString(),Password.getText().toString());
+                String user = username.getText().toString();
+                String pass = password.getText().toString();
+                String repass = repassword.getText().toString();
+
+                if(user.equals("")||pass.equals("")||repass.equals(""))
+                    Toast.makeText(SupplierLoginPageActivity.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
+                else{
+                    if(pass.equals(repass)){
+                        Boolean checkuser = DB.checkusername(user);
+                        if(checkuser==false){
+                            Boolean insert = DB.insertData(user, pass);
+                            if(insert==true){
+                                Toast.makeText(SupplierLoginPageActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(getApplicationContext(),SupplierLoginPage2Activity.class);
+                                startActivity(intent);
+                            }else{
+                                Toast.makeText(SupplierLoginPageActivity.this, "Registration failed", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        else{
+                            Toast.makeText(SupplierLoginPageActivity.this, "User already exists! please sign in", Toast.LENGTH_SHORT).show();
+                        }
+                    }else{
+                        Toast.makeText(SupplierLoginPageActivity.this, "Passwords not matching", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+            }
+        });
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),SupplierLoginPage2Activity.class);
+                startActivity(intent);
             }
         });
 
 
-    }
-
-
-    // For employee login
-    private void validate(String userName, String userPassword){
-        if((userName.equals("Supplier") && (userPassword.equals( "9012")))){
-            //Connecting the login page to the new app page which will be the employee main page
-            Intent intent = new Intent(SupplierLoginPageActivity.this, SupplierMainPageActivity.class);
-            startActivity(intent);
-        }
-        //in case wrong input
-        else{
-            counter--;
-            Info.setText("Number of attempts remaining: " + String.valueOf(counter));
-            if(counter == 0){
-                Login.setEnabled(false); //disable button for security purposes
-
-
-            }
-
-        }
 
     }
 
-    public void openPrevious(){
-        Intent intent = new Intent(SupplierLoginPageActivity.this, MainPageActivity.class);
-        startActivity(intent);
-
-    }
 }
