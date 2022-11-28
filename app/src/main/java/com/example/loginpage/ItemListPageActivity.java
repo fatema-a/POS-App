@@ -3,14 +3,15 @@ package com.example.loginpage;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class ItemListPageActivity extends AppCompatActivity {
 
-    private EditText ActivityItemList;
+    private TextView ActivityItemList;
     private ImageButton Back;
 
 
@@ -22,7 +23,7 @@ public class ItemListPageActivity extends AppCompatActivity {
         // title
         getSupportActionBar().setTitle("Item Purchase");
 
-        ActivityItemList = (EditText)findViewById(R.id.etActivityItemList);
+        ActivityItemList = findViewById(R.id.etActivityItemList);
         Back = (ImageButton)findViewById(R.id.IbtnBack);
 
         Back.setOnClickListener(new View.OnClickListener() {
@@ -31,6 +32,20 @@ public class ItemListPageActivity extends AppCompatActivity {
                 openPrevious();
             }
         });
+
+        DBHandler dbHandler = new DBHandler(this);
+        TextView textView = findViewById(R.id.etActivityItemList);
+
+        Cursor cursor = dbHandler.ViewData();
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        while(cursor.moveToNext()){
+            stringBuilder.append("\nName : "+ cursor.getString(0)
+                + "\nPrice : "+ cursor.getFloat(1));
+
+        }
+        ActivityItemList.setText(stringBuilder);
 
     }
 

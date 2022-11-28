@@ -63,6 +63,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
         // closes database after adding to database
         db.close();
+
     }
     public void editItem(String itemName, String itemPrice) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -116,5 +117,14 @@ public class DBHandler extends SQLiteOpenHelper {
         // checks to see if the table already exists
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
+    }
+
+
+    public Cursor ViewData(){
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+
+        Cursor cursor = sqLiteDatabase.rawQuery("Select * FROM inventory" + TABLE_NAME, null);
+
+        return cursor;
     }
 }
