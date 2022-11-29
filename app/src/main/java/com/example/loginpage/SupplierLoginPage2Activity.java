@@ -7,12 +7,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class SupplierLoginPage2Activity extends AppCompatActivity {
     EditText username, password;
     Button btnlogin;
     DBSupplierLogin DB;
+    private TextView Info;
+    private int counter = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +30,11 @@ public class SupplierLoginPage2Activity extends AppCompatActivity {
 
         username = (EditText) findViewById(R.id.etUsernameS);
         password = (EditText) findViewById(R.id.etPasswordS);
+        Info = (TextView) findViewById(R.id.tvinfo);
         btnlogin = (Button) findViewById(R.id.btnLoginS);
         DB = new DBSupplierLogin(this);
+
+        Info.setText("Number of attempts remaining: 3");
 
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +53,12 @@ public class SupplierLoginPage2Activity extends AppCompatActivity {
                         startActivity(intent);
                     }else{
                         Toast.makeText(SupplierLoginPage2Activity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
+
+                        counter--;
+                        Info.setText("Number of attempts remaining: " + String.valueOf(counter));
+                        if(counter == 0) {
+                            btnlogin.setEnabled(false); //disable button for security purposes
+                        }
                     }
                 }
 
