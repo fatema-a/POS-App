@@ -10,15 +10,15 @@
         android:id="@+id/IbtnBack"
         android:layout_width="80dp"
         android:layout_height="73dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.015"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.01"
-        app:srcCompat="?attr/actionModeCloseDrawable" />
+        app:srcCompat="?attr/actionModeCloseDrawable"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewList"
         android:layout_width="409dp"
         android:layout_height="650dp"
         app:layout_constraintEnd_toEndOf="parent"

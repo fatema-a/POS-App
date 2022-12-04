@@ -11,9 +11,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.Cursor;
 
+import androidx.annotation.Nullable;
+
 
 public class DBHandler extends SQLiteOpenHelper {
 
+    private Context context;
     // creates a constant variable name for our database
     private static final String DB_NAME = "inventoryDB";
 
@@ -30,8 +33,10 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String PRICE_COL = "price";
 
     // constructor for our database handler.
-    public DBHandler(Context context) {
+    public DBHandler(@Nullable Context context) {
+
         super(context, DB_NAME, null, DB_VERSION);
+        this.context = context;
     }
 
     // method for creating a database by running a sqlite query
@@ -121,12 +126,12 @@ public class DBHandler extends SQLiteOpenHelper {
 
 
     Cursor realData(){
-        String query = "SELECT * FROM " + TABLE_NAME;
+        String query = "Select * FROM inventory";
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = null;
         if(db != null){
-            cursor = db.rawQuery(query,null);
+            cursor = db.rawQuery(query,null,null);
         }
 
         return cursor;

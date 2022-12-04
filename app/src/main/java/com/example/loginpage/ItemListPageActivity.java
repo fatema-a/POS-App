@@ -16,7 +16,6 @@ import java.util.ArrayList;
 
 public class ItemListPageActivity extends AppCompatActivity {
 
-    private TextView ActivityItemList;
     private ImageButton Back;
 
     DBHandler myDB;
@@ -35,13 +34,14 @@ public class ItemListPageActivity extends AppCompatActivity {
 
         //ActivityItemList = findViewById(R.id.etActivityItemList);
         Back = (ImageButton)findViewById(R.id.IbtnBack);
+        recyclerView = findViewById(R.id.recyclerViewList);
 
-//        Back.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                openPrevious();
-//            }
-//        });
+        Back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goBackMain();
+            }
+        });
 
         myDB = new DBHandler(ItemListPageActivity.this);
         itemName = new ArrayList<>();
@@ -64,5 +64,10 @@ public class ItemListPageActivity extends AppCompatActivity {
                 itemPrice.add(cursor.getString(1));
             }
         }
+    }
+
+    public void goBackMain(){
+        Intent intent = new Intent(ItemListPageActivity.this, EmployeeMainPageActivity.class);
+        startActivity(intent);
     }
 }
