@@ -120,10 +120,14 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
 
-    public Cursor ViewData(){
-        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+    Cursor realData(){
+        String query = "SELECT * FROM " + TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = sqLiteDatabase.rawQuery("Select * FROM inventory" + TABLE_NAME, null);
+        Cursor cursor = null;
+        if(db != null){
+            cursor = db.rawQuery(query,null);
+        }
 
         return cursor;
     }
