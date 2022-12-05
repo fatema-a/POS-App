@@ -62,7 +62,6 @@ public class SupplierLoginPage2Activity extends AppCompatActivity {
                     }
                 }
 
-
             }
         });
 
