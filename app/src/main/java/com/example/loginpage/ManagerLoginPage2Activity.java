@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class ManagerLoginPage2Activity extends AppCompatActivity {
@@ -14,6 +15,8 @@ public class ManagerLoginPage2Activity extends AppCompatActivity {
     private EditText username;
     private EditText password;
     private Button signin;
+    private TextView Info;
+    private int counter = 3;
     DBManagerLogin DB;
 
     @Override
@@ -29,8 +32,11 @@ public class ManagerLoginPage2Activity extends AppCompatActivity {
 
         username = (EditText) findViewById(R.id.managerUsername2);
         password = (EditText) findViewById(R.id.managerPassword2);
+        Info = (TextView) findViewById(R.id.tvinfo);
         signin = (Button) findViewById(R.id.managerSignin2);
         DB = new DBManagerLogin(this);
+
+        Info.setText("Number of attempts remaining: 3");
 
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +55,12 @@ public class ManagerLoginPage2Activity extends AppCompatActivity {
                         startActivity(intent);
                     }else{
                         Toast.makeText(ManagerLoginPage2Activity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
+
+                        counter--;
+                        Info.setText("Number of attempts remaining: " + String.valueOf(counter));
+                        if(counter == 0) {
+                            signin.setEnabled(false); //disable button for security purposes
+                        }
                     }
                 }
             }
