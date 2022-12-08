@@ -10,33 +10,35 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class SupplierLoginPage2Activity extends AppCompatActivity {
-    EditText username, password;
-    Button btnlogin;
-    DBSupplierLogin DB;
+public class ManagerLoginPage2Activity extends AppCompatActivity {
+
+    private EditText username;
+    private EditText password;
+    private Button signin;
     private TextView Info;
     private int counter = 3;
+    DBManagerLogin DB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_supplier_login_page2);
+        setContentView(R.layout.activity_manager_login_page2);
 
         // title
-        getSupportActionBar().setTitle("Supplier Login");
+        getSupportActionBar().setTitle("Manager Login");
 
         //back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        username = (EditText) findViewById(R.id.etUsernameS);
-        password = (EditText) findViewById(R.id.etPasswordS);
+        username = (EditText) findViewById(R.id.managerUsername2);
+        password = (EditText) findViewById(R.id.managerPassword2);
         Info = (TextView) findViewById(R.id.tvinfo);
-        btnlogin = (Button) findViewById(R.id.btnLoginS);
-        DB = new DBSupplierLogin(this);
+        signin = (Button) findViewById(R.id.managerSignin2);
+        DB = new DBManagerLogin(this);
 
         Info.setText("Number of attempts remaining: 3");
 
-        btnlogin.setOnClickListener(new View.OnClickListener() {
+        signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -44,26 +46,26 @@ public class SupplierLoginPage2Activity extends AppCompatActivity {
                 String pass = password.getText().toString();
 
                 if(user.equals("")||pass.equals(""))
-                    Toast.makeText(SupplierLoginPage2Activity.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ManagerLoginPage2Activity.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
                 else{
                     Boolean checkuserpass = DB.checkusernamepassword(user, pass);
                     if(checkuserpass==true){
-                        Toast.makeText(SupplierLoginPage2Activity.this, "Sign in successfull", Toast.LENGTH_SHORT).show();
-                        Intent intent  = new Intent(getApplicationContext(), SupplierMainPageActivity.class);
+                        Toast.makeText(ManagerLoginPage2Activity.this, "Sign in successfull", Toast.LENGTH_SHORT).show();
+                        Intent intent  = new Intent(getApplicationContext(), ManagerMainActivity.class);
                         startActivity(intent);
                     }else{
-                        Toast.makeText(SupplierLoginPage2Activity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ManagerLoginPage2Activity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
 
                         counter--;
                         Info.setText("Number of attempts remaining: " + String.valueOf(counter));
                         if(counter == 0) {
-                            btnlogin.setEnabled(false); //disable button for security purposes
+                            signin.setEnabled(false); //disable button for security purposes
                         }
                     }
                 }
-
             }
         });
+
 
     }
 }

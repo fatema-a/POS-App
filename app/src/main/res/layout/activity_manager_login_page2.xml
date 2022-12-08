@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EmployeeLoginPageActivity">
+    tools:context=".ManagerLoginPage2Activity">
 
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/managerUsername2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -19,9 +19,21 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.336"/>
+        app:layout_constraintVertical_bias="0.336" />
+
+    <TextView
+        android:id="@+id/tvinfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Number of attempts remaining: "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.865" />
+
     <EditText
-        android:id="@+id/EmployeePass"
+        android:id="@+id/managerPassword2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -34,41 +46,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.45" />
-    <EditText
-        android:id="@+id/ReEmployeePass"
-        android:layout_width="211dp"
-        android:layout_height="58dp"
-        android:layout_below="@+id/EmployeePass"
-        android:hint="Retype Password"
-        android:inputType="textPassword"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.569" />
     <Button
-        android:id="@+id/EmployeeRegister"
-        android:layout_width="110dp"
-        android:layout_height="53dp"
-        android:text="Register"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.694" />
-    <Button
-        android:id="@+id/btnEmployeeSignIn"
+        android:id="@+id/managerSignin2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login Page"
+        android:text="Login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.811"/>
+        app:layout_constraintVertical_bias="0.811" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

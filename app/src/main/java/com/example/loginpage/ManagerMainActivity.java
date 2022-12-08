@@ -16,7 +16,7 @@ public class ManagerMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager_main);
 
-        //LogOut = (Button)findViewById(R.id.btnLogOut);
+        LogOut = (Button)findViewById(R.id.BackManager);
 
         LogOut.setOnClickListener(new View.OnClickListener() {
             @Override
