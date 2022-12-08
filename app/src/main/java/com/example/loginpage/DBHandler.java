@@ -70,6 +70,17 @@ public class DBHandler extends SQLiteOpenHelper {
         db.close();
 
     }
+    Cursor realData(){
+        String query = "SELECT * FROM " + TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = null;
+        if(db != null){
+            cursor = db.rawQuery(query,null);
+        }
+
+        return cursor;
+    }
     public void editItem(String itemName, String itemPrice) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -125,15 +136,5 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
 
-    Cursor realData(){
-        String query = "Select * FROM inventory";
-        SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = null;
-        if(db != null){
-            cursor = db.rawQuery(query,null,null);
-        }
-
-        return cursor;
-    }
 }
