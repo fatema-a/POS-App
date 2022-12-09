@@ -31,4 +31,5 @@ public class ManagerMainActivity extends AppCompatActivity {
         Intent intent = new Intent(ManagerMainActivity.this, MainPageActivity.class);
         startActivity(intent);
     }
+
 }
